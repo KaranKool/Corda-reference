@@ -114,7 +114,7 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
         p2pPort 10005
         rpcSettings {
             address("localhost:10006")
-            adminAddress("localhost:10046")
+            adminAddress("localhost:10007")
         }
         rpcUsers = [[ user: "user1", "password": "test", "permissions": ["ALL"]]]
     }
@@ -123,17 +123,17 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
         p2pPort 10008
         rpcSettings {
             address("localhost:10009")
-            adminAddress("localhost:10049")
+            adminAddress("localhost:10010")
         }
         rpcUsers = [[ user: "user1", "password": "test", "permissions": ["ALL"]]]
     }
 
     node {
         name "O=BankofAmerica,OU=Bank,L=New York,C=US"
-        p2pPort 10010
+        p2pPort 10011
         rpcSettings {
-            address("localhost:10007")
-            adminAddress("localhost:10047")
+            address("localhost:10012")
+            adminAddress("localhost:10013")
         }
         rpcUsers = [[ user: "user1", "password": "test", "permissions": ["ALL"]]]
     }
