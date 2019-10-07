@@ -4,7 +4,7 @@ Reference project for various best practices used in Corda.
 Corda Blockchain generally follows the following Architecture structure:
 
 <p align="center">
-  <img src="Architecture.PNG" alt="Blockchain Architecture" width="500" />
+  <img src="Architecture.png" alt="Blockchain Architecture" width="500" />
 </p>
 
 The objective of this program is to insert,update,delete and query key-value pairs from db using Corda Blockchain. In 
