@@ -109,10 +109,9 @@ The API endpoints are defined here:
 #### Running the webserver
 
 The [PartyName] variable must be replaced with the appropriate name depending on the server you want to run:
-    
-    * Bank for Owning Bank
-    * Dealer for Holding Dealership
-    * Manufacturer for Manufacturer
+  * Bank for Owning Bank
+  * Dealer for Holding Dealership
+  * Manufacturer for Manufacturer
     
    ##### Via the command line
    
