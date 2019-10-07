@@ -99,13 +99,6 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
         }
         cordapp project(':contracts')
         cordapp project(':workflows')
-        extraConfig = [
-                'dataSourceProperties.dataSource.url' : 'jdbc:postgresql://localhost:5432/postgres',
-                'dataSourceProperties.dataSourceClassName' : 'org.postgresql.ds.PGSimpleDataSource',
-                'dataSourceProperties.dataSource.user' : 'postgres',
-                'dataSourceProperties.dataSource.password' : 'password',
-                'jarDirs' : [ '.' ]
-        ]
     }
     node {
         name "O=Notary,L=London,C=GB"

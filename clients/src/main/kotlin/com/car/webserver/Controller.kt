@@ -3,7 +3,6 @@ package com.car.webserver
 import com.car.base.CarModel
 import com.car.flows.CarIssueInitiator
 import com.car.states.CarState
-import net.corda.core.contracts.StateAndRef
 import net.corda.core.identity.CordaX500Name
 import net.corda.core.messaging.startTrackedFlow
 import net.corda.core.messaging.vaultQueryBy
@@ -86,6 +85,7 @@ class Controller(rpc: NodeRPCConnection) {
         return try {
             val signedTx = proxy.startTrackedFlow(::CarIssueInitiator, vin, licensePlateNumber, make, model,
                     dealershipLocation).returnValue.getOrThrow()
+            logger.info("Transaction id ${signedTx.id} committed to ledger.\n")
             ResponseEntity.status(HttpStatus.CREATED).body("Transaction id ${signedTx.id} committed to ledger.\n")
 
         } catch (ex: Throwable) {
