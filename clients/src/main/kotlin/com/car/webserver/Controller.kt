@@ -2,8 +2,10 @@ package com.car.webserver
 
 import com.car.base.CarModel
 import com.car.flows.CarIssueInitiator
+import com.car.flows.databaseServices.CarQuery
 import com.car.states.CarState
 import net.corda.core.identity.CordaX500Name
+import net.corda.core.messaging.FlowHandle
 import net.corda.core.messaging.startTrackedFlow
 import net.corda.core.messaging.vaultQueryBy
 import net.corda.core.node.services.vault.QueryCriteria
@@ -12,10 +14,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.RequestEntity
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 /**
  * Define your API endpoints here.
@@ -92,5 +91,16 @@ class Controller(rpc: NodeRPCConnection) {
             logger.error(ex.message, ex)
             ResponseEntity.badRequest().body(ex.message!!)
         }
+    }
+
+    @GetMapping(value = ["/query"], produces = ["application/json"])
+    private fun carQuery(@RequestParam vinCon:String?): ResponseEntity<List<CarModel>> {
+        logger.info("Accessing create car issue")
+        val flowHandle: FlowHandle<List<CarModel>> = proxy.startFlowDynamic(
+                CarQuery::class.java,
+                vinCon)
+        val result = flowHandle.use { flowHandle.returnValue.getOrThrow() }
+        return ResponseEntity.status(HttpStatus.OK)
+                    .body(result)
     }
 }
