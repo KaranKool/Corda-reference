@@ -215,10 +215,9 @@ jarDirs = ["[FULL_PATH]/sqljdbc_6.2/enu/"]
 
 ## Database operations
 
-Database operations are done by creating 2 service layers. First is used to query statements to the DB so the operations 
-can be executed. Second is to connect the flows to db service layer. The DB service layer code is a standard code and 
-can be used directly. The second layer needs to be configured according to project and must create the query statement 
-the will be executed in the DB.
+Database query operations, on the custom schema table we create, can be done in two different ways -- Using VaulCustomQuery Function or Creating SQL statements and running them through services provided by JPA.
+
+Sample for VaultCustomQuery can be found in [root]/workflow/src/main/kotlin/com/car/flows/databaseServices/QuerFlow.kt of the reference project.
 
 
 ## Rest API definition/creation
