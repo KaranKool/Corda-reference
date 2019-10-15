@@ -7,9 +7,7 @@ Corda Blockchain generally follows the following Architecture structure:
   <img src="Architecture.png" alt="Blockchain Architecture" width="500" />
 </p>
 
-The objective of this program is to insert,update,delete and query key-value pairs from db using Corda Blockchain. In 
-this project we will tackle the Blockchain layer and Blockchain API layer. The Blockchain layer is coded in Kotlin 
-language and API in Springboot. The project contains a single node which interacts with the PostgreSQL DB through the 
+The objective of this program is to set up a network for creating a new car object from the manufacturer, which is shared by all the nodes in the network. In this project we will tackle the Blockchain layer and Blockchain API layer. The Blockchain layer is coded in Kotlin language and API in Springboot. The project contains a single node which interacts with the PostgreSQL DB through the 
 corda flows. **No State or Contract is initiated in this Project**. The project also contains web apis for creating, 
 updating and querying in the db.
 
@@ -131,6 +129,7 @@ The [PartyName] variable must be replaced with the appropriate name depending on
     * http://localhost:[port]/peers  (GET Endpoint)
     * http://localhost:[port]/me  (GET Endpoint)
     * http://localhost:10060/issue (POST Endpoint from Manufacturer only)
+    * http://localhost:[port]/query (GET Endpoint)
 
 2. Open Postman tool and send GET/POST request as per requirement.
 
@@ -146,7 +145,7 @@ solutions apply to SLF4J, JUL, and other logging libraries.
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.0'
     }
     ```
-    Refer file: _"/CordaReferenceProject-master/clients/build.gradle"_
+    Refer file: _"/clients/build.gradle"_
 
 2. Logging is done by mainly by using companion objects in Kotlin. The below code shows how to define logger object to do 
 logging in class
@@ -165,7 +164,7 @@ logging in class
        loggerWithExplicitClass.info(s)
     }
     ```
-    Refer file: _"/com/flowdb/webserver/Controller.kt"_ 
+    Refer file: _"/com/car/webserver/Controller.kt"_ 
 
 ## Exception Handling
 
